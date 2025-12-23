@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Amount - High Yield Vault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#0D0C12',
+                        'brand-surface': '#1A1822',
+                        'brand-background': '#0F0E14',
+                        'brand-outline': '#332E44',
+                        'brand-primary': '#A855F7',
+                        'brand-secondary': '#6C3BAA',
+                        'brand-accent-yes': '#39D393',
+                        'brand-accent-no': '#F87171',
+                        'brand-text-primary': '#E5E7EB',
+                        'brand-text-secondary': '#9CA3AF',
+                    },
+                    fontFamily: {
+                        sans: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'glow-primary': '0 0 15px 5px rgba(168, 85, 247, 0.2)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .mobile-frame {
+            width: 390px;
+            height: 844px;
+            margin: 40px auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+<div class="mobile-frame bg-brand-bg overflow-y-auto">
+
+    <!-- Header -->
+    <div class="bg-brand-surface px-4 py-4 flex items-center justify-between sticky top-0 z-10 border-b border-brand-outline">
+        <button class="flex items-center gap-2 text-brand-text-secondary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <h1 class="text-brand-text-primary font-bold text-lg">Deposit</h1>
+        <div class="w-6"></div>
+    </div>
+
+    <!-- Vault Info Banner -->
+    <div class="px-4 py-4 bg-brand-surface border-b border-brand-outline">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-full flex items-center justify-center text-xl">
+                🚀
+            </div>
+            <div>
+                <h2 class="text-brand-text-primary font-semibold">High Yield Vault</h2>
+                <p class="text-brand-text-secondary text-xs">28.4% APY • 4-day lockup</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wallet Balance -->
+    <div class="px-4 py-6 border-b border-brand-outline">
+        <div class="flex items-center justify-between mb-2">
+            <p class="text-brand-text-secondary text-sm">Wallet Balance</p>
+            <button class="text-brand-primary text-xs font-semibold flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                Refresh
+            </button>
+        </div>
+        <p class="text-brand-text-primary text-2xl font-bold">1,250.50 USDC</p>
+        <p class="text-brand-text-secondary text-xs mt-1">Available on Arbitrum</p>
+    </div>
+
+    <!-- Amount Input -->
+    <div class="px-4 py-6 border-b border-brand-outline">
+        <h3 class="text-brand-text-primary font-semibold mb-4">Amount to Deposit</h3>
+
+        <div class="bg-brand-surface border-2 border-brand-primary rounded-2xl p-4 mb-4 focus-within:border-brand-primary focus-within:shadow-glow-primary transition-all">
+            <input
+                type="number"
+                id="amountInput"
+                placeholder="0.00"
+                oninput="updatePreview()"
+                class="w-full bg-transparent text-brand-text-primary text-4xl font-bold outline-none placeholder-brand-text-secondary"
+                value="500"
+            />
+            <div class="flex items-center justify-between mt-2">
+                <span class="text-brand-text-secondary text-sm">USDC</span>
+                <span class="text-brand-text-secondary text-xs">≈ $500.00</span>
+            </div>
+        </div>
+
+        <!-- Quick Select Buttons -->
+        <div class="grid grid-cols-4 gap-2 mb-4">
+            <button onclick="setAmount(312.625)" class="px-4 py-2 bg-brand-surface border border-brand-outline rounded-lg text-brand-text-secondary text-sm font-semibold hover:border-brand-primary transition-all">
+                25%
+            </button>
+            <button onclick="setAmount(625.25)" class="px-4 py-2 bg-brand-surface border border-brand-outline rounded-lg text-brand-text-secondary text-sm font-semibold hover:border-brand-primary transition-all">
+                50%
+            </button>
+            <button onclick="setAmount(937.875)" class="px-4 py-2 bg-brand-surface border border-brand-outline rounded-lg text-brand-text-secondary text-sm font-semibold hover:border-brand-primary transition-all">
+                75%
+            </button>
+            <button onclick="setAmount(1250.50)" class="px-4 py-2 bg-brand-surface border border-brand-outline rounded-lg text-brand-text-secondary text-sm font-semibold hover:border-brand-primary transition-all">
+                Max
+            </button>
+        </div>
+
+        <!-- Deposit Preview -->
+        <div class="bg-brand-surface rounded-xl p-4 space-y-2">
+            <p class="text-brand-text-secondary text-xs font-semibold mb-3">Deposit Preview</p>
+
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">You deposit</span>
+                <span class="text-brand-text-primary font-semibold" id="previewAmount">500 USDC</span>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Estimated APY</span>
+                <span class="text-brand-accent-yes font-semibold">28.4%</span>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Est. yearly earnings</span>
+                <span class="text-brand-text-primary font-semibold" id="previewYearly">~142 USDC</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Warning Box -->
+    <div class="px-4 py-6 border-b border-brand-outline">
+        <div class="bg-orange-500/10 border-2 border-orange-500/50 rounded-xl p-4">
+            <div class="flex items-start gap-3">
+                <span class="text-2xl">⚠️</span>
+                <div>
+                    <p class="text-orange-300 font-semibold mb-1">Important: Withdrawal Lockup</p>
+                    <p class="text-brand-text-secondary text-sm leading-relaxed">
+                        After depositing, your funds will be <span class="text-orange-300 font-semibold">locked for 4 days</span> before you can withdraw.
+                        Make sure you won't need these funds immediately.
+                    </p>
+                    <div class="mt-3 pt-3 border-t border-orange-500/30">
+                        <p class="text-brand-text-secondary text-xs">
+                            Unlock date: <span class="text-brand-text-primary font-semibold">Dec 26, 2024 3:19 PM</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Info -->
+    <div class="px-4 py-6">
+        <div class="space-y-3">
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Network</span>
+                <span class="text-brand-text-primary text-sm">🔷 Arbitrum</span>
+            </div>
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Est. Gas Fee</span>
+                <span class="text-brand-text-primary text-sm">~$2.00</span>
+            </div>
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Minimum Deposit</span>
+                <span class="text-brand-text-primary text-sm">$100 USDC</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Action Button -->
+    <div class="sticky bottom-0 bg-brand-surface border-t border-brand-outline px-4 py-4">
+        <button class="w-full bg-brand-primary hover:bg-brand-secondary text-white font-semibold py-4 rounded-xl transition-all shadow-glow-primary disabled:opacity-50 disabled:cursor-not-allowed">
+            Continue
+        </button>
+    </div>
+
+</div>
+
+<script>
+    function setAmount(amount) {
+        document.getElementById('amountInput').value = amount.toFixed(2);
+        updatePreview();
+    }
+
+    function updatePreview() {
+        const amount = parseFloat(document.getElementById('amountInput').value) || 0;
+        const apy = 0.284; // 28.4%
+        const yearly = amount * apy;
+
+        document.getElementById('previewAmount').textContent = `${amount.toFixed(2)} USDC`;
+        document.getElementById('previewYearly').textContent = `~${yearly.toFixed(2)} USDC`;
+    }
+
+    // Initialize preview
+    updatePreview();
+</script>
+
+</body>
+</html>

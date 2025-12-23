@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Metrics Vault - Mobile Prototypes | Annur Hangga Prihadi</title>
+    <meta name="description" content="Interactive mobile prototypes for Token Metrics vault deposit/withdrawal experience">
+    <link rel="icon" type="image/png" href="TM.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            background: #0D0C12;
+            color: #E5E7EB;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header .logo {
+            width: 180px;
+            height: auto;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #A855F7 0%, #6C3BAA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .header .subtitle {
+            font-size: 20px;
+            color: #9CA3AF;
+            margin-bottom: 8px;
+        }
+
+        .header .author {
+            font-size: 16px;
+            color: #6B7280;
+        }
+
+        .header .author span {
+            color: #A855F7;
+            font-weight: 600;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #332E44;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #E5E7EB;
+        }
+
+        .section-header .badge {
+            background: #A855F7;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Screen Grid */
+        .screen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .screen-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .screen-label {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .screen-label .screen-number {
+            font-size: 14px;
+            color: #A855F7;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .screen-label .screen-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #E5E7EB;
+            margin-bottom: 8px;
+        }
+
+        .screen-label .screen-description {
+            font-size: 14px;
+            color: #9CA3AF;
+            line-height: 1.5;
+        }
+
+        .screen-frame {
+            width: 390px;
+            height: 844px;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        0 0 0 1px rgba(168, 85, 247, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .screen-frame:hover {
+            box-shadow: 0 30px 80px rgba(168, 85, 247, 0.3),
+                        0 0 0 1px rgba(168, 85, 247, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .screen-frame iframe {
+            width: 390px;
+            height: 844px;
+            border: none;
+            display: block;
+        }
+
+        .screen-actions {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #A855F7;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #9333EA;
+        }
+
+        .btn-secondary {
+            background: #1A1822;
+            color: #E5E7EB;
+            border: 1px solid #332E44;
+        }
+
+        .btn-secondary:hover {
+            background: #2A2435;
+            border-color: #A855F7;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding-top: 60px;
+            margin-top: 80px;
+            border-top: 1px solid #332E44;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #9CA3AF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #A855F7;
+        }
+
+        .footer-credit {
+            font-size: 14px;
+            color: #6B7280;
+        }
+
+        .footer-credit span {
+            color: #A855F7;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .screen-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .screen-frame {
+                width: 100%;
+                max-width: 390px;
+            }
+
+            .screen-frame iframe {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <img src="TM.png" alt="Token Metrics" class="logo">
+            <h1>Token Metrics Vault</h1>
+            <p class="subtitle">Mobile Deposit & Withdrawal Experience</p>
+            <p class="author">Interactive Prototypes by <span>Annur Hangga Prihadi</span></p>
+        </div>
+
+        <!-- Main Flows Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Main User Flows</h2>
+                <span class="badge">9 Screens</span>
+            </div>
+
+            <div class="screen-grid">
+
+                <!-- Screen 1 -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 1</div>
+                        <div class="screen-title">Home</div>
+                        <div class="screen-description">
+                            Browse 3 vaults with APY, risk, and lockup displayed upfront
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-1-home.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-1-home.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+                <!-- Screen 2a -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 2a</div>
+                        <div class="screen-title">Vault Detail - Empty</div>
+                        <div class="screen-description">
+                            First-time user view with educational checklist
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-2-vault-detail-empty.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-2-vault-detail-empty.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+                <!-- Screen 2b -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 2b</div>
+                        <div class="screen-title">Vault Detail - Active</div>
+                        <div class="screen-description">
+                            Returning user with active position and lockup countdown
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-2-vault-detail-active.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-2-vault-detail-active.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+                <!-- Screen 3a -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 3a</div>
+                        <div class="screen-title">Deposit - Amount</div>
+                        <div class="screen-description">
+                            Amount input with live preview and lockup warning
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-3a-deposit-amount.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-3a-deposit-amount.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+                <!-- Screen 3b -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 3b</div>
+                        <div class="screen-title">Deposit - Review</div>
+                        <div class="screen-description">
+                            Mandatory checkboxes for informed consent
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-3b-deposit-review.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-3b-deposit-review.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+                <!-- Screen 3c -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 3c</div>
+                        <div class="screen-title">Deposit - Success</div>
+                        <div class="screen-description">
+                            Success confirmation with transaction details
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-3c-deposit-success.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-3c-deposit-success.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+                <!-- Screen 4a -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 4a</div>
+                        <div class="screen-title">Withdraw - Amount</div>
+                        <div class="screen-description">
+                            Locked vs available breakdown with unlock countdowns
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-4a-withdraw-amount.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-4a-withdraw-amount.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+                <!-- Screen 4b -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 4b</div>
+                        <div class="screen-title">Withdraw - Pending</div>
+                        <div class="screen-description">
+                            Beautiful waiting with countdown timer and progress bar
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-4b-withdraw-pending.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-4b-withdraw-pending.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+                <!-- Screen 5 -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 5</div>
+                        <div class="screen-title">Portfolio</div>
+                        <div class="screen-description">
+                            Complete portfolio with positions and pending withdrawals
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-5-portfolio.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-5-portfolio.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Edge Cases Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Edge Case Handling</h2>
+                <span class="badge">3 Screens</span>
+            </div>
+
+            <div class="screen-grid">
+
+                <!-- Screen 6 -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 6</div>
+                        <div class="screen-title">Transaction Failed</div>
+                        <div class="screen-description">
+                            Clear error messaging with recovery options
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-6-error-insufficient-gas.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-6-error-insufficient-gas.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+                <!-- Screen 7 -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 7</div>
+                        <div class="screen-title">Vault Paused</div>
+                        <div class="screen-description">
+                            Transparent communication during maintenance
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-7-vault-paused.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-7-vault-paused.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+                <!-- Screen 8 -->
+                <div class="screen-item">
+                    <div class="screen-label">
+                        <div class="screen-number">Screen 8</div>
+                        <div class="screen-title">Partial Withdrawal</div>
+                        <div class="screen-description">
+                            Smart options when user wants more than available
+                        </div>
+                    </div>
+                    <div class="screen-frame">
+                        <iframe src="screen-8-partial-withdrawal.html" loading="lazy"></iframe>
+                    </div>
+                    <div class="screen-actions">
+                        <button class="btn btn-primary" onclick="openFullscreen('screen-8-partial-withdrawal.html')">View Fullscreen</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="https://github.com/YOUR_USERNAME/token-metrics-vault" target="_blank">📄 Documentation</a>
+                <a href="YOUR_FIGMA_LINK" target="_blank">🎨 Figma Designs</a>
+                <a href="YOUR_VIDEO_LINK" target="_blank">🎬 Video Walkthrough</a>
+            </div>
+            <p class="footer-credit">
+                Product Manager Assignment for Token Metrics · Designed by <span>Annur Hangga Prihadi</span>
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        function openFullscreen(filename) {
+            window.open(filename, '_blank', 'width=390,height=844,resizable=yes,scrollbars=yes');
+        }
+    </script>
+
+</body>
+</html>

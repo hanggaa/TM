@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal Pending - High Yield Vault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#0D0C12',
+                        'brand-surface': '#1A1822',
+                        'brand-background': '#0F0E14',
+                        'brand-outline': '#332E44',
+                        'brand-primary': '#A855F7',
+                        'brand-secondary': '#6C3BAA',
+                        'brand-accent-yes': '#39D393',
+                        'brand-accent-no': '#F87171',
+                        'brand-text-primary': '#E5E7EB',
+                        'brand-text-secondary': '#9CA3AF',
+                    },
+                    fontFamily: {
+                        sans: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'glow-primary': '0 0 15px 5px rgba(168, 85, 247, 0.2)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .mobile-frame {
+            width: 390px;
+            height: 844px;
+            margin: 40px auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+        }
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        .pulse-animation {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        .progress-bar {
+            transition: width 1s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+<div class="mobile-frame bg-brand-bg overflow-y-auto">
+
+    <!-- Header -->
+    <div class="bg-brand-surface px-4 py-4 flex items-center justify-between sticky top-0 z-10 border-b border-brand-outline">
+        <button class="flex items-center gap-2 text-brand-text-secondary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <h1 class="text-brand-text-primary font-bold text-lg">Withdrawal Pending</h1>
+        <div class="w-6"></div>
+    </div>
+
+    <!-- Status Banner -->
+    <div class="px-4 py-6 bg-brand-surface border-b border-brand-outline">
+        <div class="flex items-center gap-3 mb-3">
+            <div class="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center text-2xl pulse-animation">
+                🕐
+            </div>
+            <div>
+                <h2 class="text-brand-text-primary font-bold text-lg">Withdrawal Requested</h2>
+                <p class="text-brand-text-secondary text-sm">Waiting for lockup to end</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Countdown Section -->
+    <div class="px-4 py-6 border-b border-brand-outline">
+        <div class="bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl p-6 mb-4">
+            <p class="text-white/70 text-sm mb-2">Time until claimable</p>
+            <div class="flex items-baseline gap-2 mb-4">
+                <span class="text-white font-bold text-5xl" id="days">2</span>
+                <span class="text-white/70 text-lg">days</span>
+                <span class="text-white font-bold text-5xl" id="hours">5</span>
+                <span class="text-white/70 text-lg">hours</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="bg-white/20 rounded-full h-2 overflow-hidden">
+                <div class="progress-bar bg-white h-full rounded-full" style="width: 50%"></div>
+            </div>
+            <div class="flex items-center justify-between mt-2">
+                <span class="text-white/60 text-xs">Dec 22, 2024</span>
+                <span class="text-white/60 text-xs">Dec 26, 2024</span>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="space-y-4">
+            <!-- Step 1: Requested (Done) -->
+            <div class="flex items-start gap-3">
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 bg-brand-accent-yes rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                    <div class="w-0.5 h-12 bg-brand-outline"></div>
+                </div>
+                <div class="flex-1 pt-1">
+                    <p class="text-brand-text-primary font-semibold">Withdrawal Requested</p>
+                    <p class="text-brand-text-secondary text-sm">Dec 22, 2024 10:00 AM</p>
+                </div>
+            </div>
+
+            <!-- Step 2: Waiting (Current) -->
+            <div class="flex items-start gap-3">
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center pulse-animation">
+                        <span class="text-white text-lg">⏳</span>
+                    </div>
+                    <div class="w-0.5 h-12 bg-brand-outline"></div>
+                </div>
+                <div class="flex-1 pt-1">
+                    <p class="text-brand-text-primary font-semibold">Waiting for Lockup</p>
+                    <p class="text-orange-400 text-sm font-semibold">2 days, 5 hours remaining</p>
+                </div>
+            </div>
+
+            <!-- Step 3: Claim (Pending) -->
+            <div class="flex items-start gap-3">
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 border-2 border-brand-outline rounded-full flex items-center justify-center">
+                        <span class="text-brand-text-secondary text-lg">💰</span>
+                    </div>
+                </div>
+                <div class="flex-1 pt-1">
+                    <p class="text-brand-text-secondary font-semibold">Ready to Claim</p>
+                    <p class="text-brand-text-secondary text-sm">Dec 26, 2024 3:19 PM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Withdrawal Details -->
+    <div class="px-4 py-6 border-b border-brand-outline">
+        <h3 class="text-brand-text-primary font-semibold mb-4">Withdrawal Details</h3>
+
+        <div class="bg-brand-surface rounded-2xl p-5 space-y-4">
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Amount</span>
+                <span class="text-brand-text-primary font-bold text-lg">500 USDC</span>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">From</span>
+                <span class="text-brand-text-primary text-sm">High Yield Vault</span>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Network</span>
+                <span class="text-brand-text-primary text-sm">🔷 Arbitrum</span>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Est. Gas Fee</span>
+                <span class="text-brand-text-primary text-sm">~$1.50</span>
+            </div>
+
+            <div class="pt-4 border-t border-brand-outline">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-brand-text-secondary text-xs">Request Transaction</span>
+                    <button class="text-brand-primary text-xs font-semibold flex items-center gap-1">
+                        Copy
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <p class="text-brand-text-secondary text-xs font-mono break-all">
+                    0x3c8f9e2a...7b4d1c6e9f
+                </p>
+                <a href="#" class="text-brand-primary text-xs font-semibold flex items-center gap-1 mt-2">
+                    View on Arbiscan
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reminder Section -->
+    <div class="px-4 py-6">
+        <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 mb-4">
+            <div class="flex items-start gap-3">
+                <span class="text-xl">💡</span>
+                <div>
+                    <p class="text-blue-300 font-semibold text-sm mb-2">Don't miss your claim window</p>
+                    <p class="text-brand-text-secondary text-xs mb-3">
+                        Add the unlock date to your calendar so you don't forget to claim your funds.
+                    </p>
+                    <button class="bg-blue-500/20 border border-blue-500/40 text-blue-300 px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 hover:bg-blue-500/30 transition-all">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        Add to Calendar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-brand-surface rounded-xl p-4">
+            <div class="flex items-start gap-3">
+                <span class="text-xl">🔔</span>
+                <div>
+                    <p class="text-brand-text-primary font-semibold text-sm mb-1">We'll notify you</p>
+                    <p class="text-brand-text-secondary text-xs">
+                        You'll receive a push notification when your withdrawal is ready to claim on Dec 26.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Action Button -->
+    <div class="sticky bottom-0 bg-brand-surface border-t border-brand-outline px-4 py-4">
+        <button disabled class="w-full bg-brand-primary/40 text-white/60 font-semibold py-4 rounded-xl transition-all cursor-not-allowed">
+            Claim Withdrawal
+        </button>
+        <p class="text-center text-brand-text-secondary text-xs mt-2">
+            Available to claim in 2 days, 5 hours
+        </p>
+    </div>
+
+</div>
+
+<script>
+    // Countdown timer simulation (in real app, this would calculate from actual timestamp)
+    function updateCountdown() {
+        // This is a static prototype, but in production you'd calculate real time difference
+        const now = new Date();
+        const unlockDate = new Date('2024-12-26T15:19:00');
+        const diff = unlockDate - now;
+
+        if (diff > 0) {
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+        }
+    }
+
+    // Update progress bar based on time elapsed
+    function updateProgressBar() {
+        const startDate = new Date('2024-12-22T10:00:00');
+        const unlockDate = new Date('2024-12-26T15:19:00');
+        const now = new Date();
+
+        const totalDuration = unlockDate - startDate;
+        const elapsed = now - startDate;
+        const progress = Math.min((elapsed / totalDuration) * 100, 100);
+
+        document.querySelector('.progress-bar').style.width = progress + '%';
+    }
+
+    // Initialize
+    updateCountdown();
+    updateProgressBar();
+
+    // Update every minute
+    setInterval(updateCountdown, 60000);
+</script>
+
+</body>
+</html>

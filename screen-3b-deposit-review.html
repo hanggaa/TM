@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Deposit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#0D0C12',
+                        'brand-surface': '#1A1822',
+                        'brand-background': '#0F0E14',
+                        'brand-outline': '#332E44',
+                        'brand-primary': '#A855F7',
+                        'brand-secondary': '#6C3BAA',
+                        'brand-accent-yes': '#39D393',
+                        'brand-accent-no': '#F87171',
+                        'brand-text-primary': '#E5E7EB',
+                        'brand-text-secondary': '#9CA3AF',
+                    },
+                    fontFamily: {
+                        sans: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'glow-primary': '0 0 15px 5px rgba(168, 85, 247, 0.2)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .mobile-frame {
+            width: 390px;
+            height: 844px;
+            margin: 40px auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+<div class="mobile-frame bg-brand-bg overflow-y-auto">
+
+    <!-- Header -->
+    <div class="bg-brand-surface px-4 py-4 flex items-center justify-between sticky top-0 z-10 border-b border-brand-outline">
+        <button class="flex items-center gap-2 text-brand-text-secondary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <h1 class="text-brand-text-primary font-bold text-lg">Review Deposit</h1>
+        <div class="w-6"></div>
+    </div>
+
+    <!-- Summary Card -->
+    <div class="px-4 py-6">
+        <div class="bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl p-6 mb-6">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center text-2xl">
+                    🚀
+                </div>
+                <div>
+                    <h2 class="text-white font-bold text-lg">High Yield Vault</h2>
+                    <p class="text-white/70 text-sm">28.4% APY • 4-day lockup</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="text-brand-text-primary font-semibold mb-4">Transaction Details</h3>
+
+        <div class="bg-brand-surface rounded-2xl p-5 space-y-4 mb-6">
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">You deposit</span>
+                <span class="text-brand-text-primary font-bold text-lg">500 USDC</span>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Est. APY</span>
+                <span class="text-brand-accent-yes font-semibold">28.4%</span>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Est. yearly earnings</span>
+                <span class="text-brand-text-primary font-semibold">~142 USDC</span>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Lockup period</span>
+                <span class="text-orange-400 font-semibold">4 days</span>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <span class="text-brand-text-secondary text-sm">Unlock date</span>
+                <span class="text-brand-text-primary font-semibold text-sm">Dec 26, 3:19 PM</span>
+            </div>
+
+            <div class="pt-4 border-t border-brand-outline">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-brand-text-secondary text-sm">Network fee</span>
+                    <span class="text-brand-text-primary">~$2.00</span>
+                </div>
+                <p class="text-brand-text-secondary text-xs">Arbitrum gas fee</p>
+            </div>
+
+            <div class="pt-2 border-t-2 border-brand-outline">
+                <div class="flex items-center justify-between">
+                    <span class="text-brand-text-primary font-semibold">Total cost</span>
+                    <span class="text-brand-text-primary font-bold text-xl">~$502.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Important Confirmation -->
+        <div class="mb-6">
+            <div class="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 mb-4">
+                <p class="text-orange-300 font-semibold text-sm mb-2">⚠️ Important: Read Before Confirming</p>
+                <p class="text-brand-text-secondary text-xs">
+                    Please confirm you understand the terms below before proceeding with this transaction.
+                </p>
+            </div>
+
+            <!-- Checkbox 1 -->
+            <label class="flex items-start gap-3 bg-brand-surface rounded-xl p-4 mb-3 cursor-pointer hover:border hover:border-brand-primary transition-all">
+                <input
+                    type="checkbox"
+                    id="checkbox1"
+                    onchange="checkConfirmButton()"
+                    class="mt-1 w-5 h-5 rounded border-2 border-brand-outline checked:bg-brand-primary checked:border-brand-primary cursor-pointer"
+                />
+                <div>
+                    <p class="text-brand-text-primary font-medium text-sm mb-1">
+                        I understand my funds will be locked for 4 days
+                    </p>
+                    <p class="text-brand-text-secondary text-xs">
+                        After deposit, you cannot withdraw until Dec 26, 2024 at 3:19 PM
+                    </p>
+                </div>
+            </label>
+
+            <!-- Checkbox 2 -->
+            <label class="flex items-start gap-3 bg-brand-surface rounded-xl p-4 cursor-pointer hover:border hover:border-brand-primary transition-all">
+                <input
+                    type="checkbox"
+                    id="checkbox2"
+                    onchange="checkConfirmButton()"
+                    class="mt-1 w-5 h-5 rounded border-2 border-brand-outline checked:bg-brand-primary checked:border-brand-primary cursor-pointer"
+                />
+                <div>
+                    <p class="text-brand-text-primary font-medium text-sm mb-1">
+                        I've reviewed the network fee and transaction details
+                    </p>
+                    <p class="text-brand-text-secondary text-xs">
+                        Total cost including gas: ~$502.00
+                    </p>
+                </div>
+            </label>
+        </div>
+
+    </div>
+
+    <!-- Bottom Action Button -->
+    <div class="sticky bottom-0 bg-brand-surface border-t border-brand-outline px-4 py-4">
+        <button
+            id="confirmButton"
+            disabled
+            class="w-full bg-brand-primary hover:bg-brand-secondary text-white font-semibold py-4 rounded-xl transition-all shadow-glow-primary disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+            Confirm Deposit
+        </button>
+        <p class="text-center text-brand-text-secondary text-xs mt-2">
+            You'll be asked to sign the transaction in your wallet
+        </p>
+    </div>
+
+</div>
+
+<script>
+    function checkConfirmButton() {
+        const checkbox1 = document.getElementById('checkbox1').checked;
+        const checkbox2 = document.getElementById('checkbox2').checked;
+        const confirmButton = document.getElementById('confirmButton');
+
+        if (checkbox1 && checkbox2) {
+            confirmButton.disabled = false;
+        } else {
+            confirmButton.disabled = true;
+        }
+    }
+</script>
+
+</body>
+</html>

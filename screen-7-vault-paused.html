@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Paused</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#0D0C12',
+                        'brand-surface': '#1A1822',
+                        'brand-background': '#0F0E14',
+                        'brand-outline': '#332E44',
+                        'brand-primary': '#A855F7',
+                        'brand-secondary': '#6C3BAA',
+                        'brand-accent-yes': '#39D393',
+                        'brand-accent-no': '#F87171',
+                        'brand-text-primary': '#E5E7EB',
+                        'brand-text-secondary': '#9CA3AF',
+                    },
+                    fontFamily: {
+                        sans: ['"Space Grotesk"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .mobile-frame {
+            width: 390px;
+            height: 844px;
+            margin: 40px auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+<div class="mobile-frame bg-brand-bg overflow-y-auto">
+
+    <!-- Header -->
+    <div class="bg-brand-surface px-4 py-4 flex items-center justify-between border-b border-brand-outline">
+        <button class="flex items-center gap-2 text-brand-text-secondary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <h1 class="text-brand-text-primary font-bold text-lg">High Yield Vault</h1>
+        <div class="w-6"></div>
+    </div>
+
+    <!-- Paused Status Banner -->
+    <div class="bg-orange-500/20 border-b-2 border-orange-500/50 px-4 py-4">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-orange-500/30 rounded-full flex items-center justify-center pulse-animation">
+                <span class="text-2xl">⏸️</span>
+            </div>
+            <div>
+                <p class="text-orange-300 font-bold text-lg">Vault Temporarily Paused</p>
+                <p class="text-brand-text-secondary text-xs">Updated 2 minutes ago</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="px-4 py-6">
+
+        <!-- Why Paused -->
+        <div class="bg-brand-surface rounded-2xl p-5 mb-4">
+            <h3 class="text-brand-text-primary font-semibold mb-3">Why is this vault paused?</h3>
+            <p class="text-brand-text-secondary text-sm leading-relaxed mb-4">
+                Strategy migration in progress. We're upgrading the vault to a new version with improved performance and security.
+            </p>
+
+            <div class="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3">
+                <div class="flex items-start gap-2">
+                    <span class="text-lg">✅</span>
+                    <div>
+                        <p class="text-blue-300 text-sm font-semibold mb-1">Your funds are safe</p>
+                        <p class="text-brand-text-secondary text-xs">All funds remain secure and continue earning yield during the pause.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expected Resolution -->
+        <div class="bg-brand-surface rounded-2xl p-5 mb-4">
+            <h3 class="text-brand-text-primary font-semibold mb-3">Expected resolution</h3>
+            <div class="flex items-baseline gap-2 mb-2">
+                <span class="text-brand-primary font-bold text-3xl">6</span>
+                <span class="text-brand-text-secondary">hours</span>
+            </div>
+            <p class="text-brand-text-secondary text-xs">Estimated resume: 24 Dec 2025 8:00 PM</p>
+        </div>
+
+        <!-- Current Restrictions -->
+        <div class="bg-brand-surface rounded-2xl p-5 mb-4">
+            <h3 class="text-brand-text-primary font-semibold mb-4">Current restrictions</h3>
+            <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                    <span class="text-brand-accent-no text-xl">❌</span>
+                    <div>
+                        <p class="text-brand-text-primary font-medium text-sm">New deposits disabled</p>
+                        <p class="text-brand-text-secondary text-xs">Will resume after migration</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-brand-accent-no text-xl">❌</span>
+                    <div>
+                        <p class="text-brand-text-primary font-medium text-sm">Withdrawals delayed</p>
+                        <p class="text-brand-text-secondary text-xs">Can withdraw after vault reopens</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-brand-accent-yes text-xl">✅</span>
+                    <div>
+                        <p class="text-brand-text-primary font-medium text-sm">Existing positions earning</p>
+                        <p class="text-brand-text-secondary text-xs">Your funds continue to earn yield</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Position (if user has one) -->
+        <div class="bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl p-5 mb-4">
+            <p class="text-white/70 text-xs mb-1">Your Position</p>
+            <p class="text-white font-bold text-2xl mb-1">$1,089.23</p>
+            <p class="text-green-300 text-sm">+$89.23 (+8.9%)</p>
+
+            <div class="mt-4 pt-4 border-t border-white/20">
+                <p class="text-white/70 text-xs mb-2">Status</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-yellow-300">🟡</span>
+                    <span class="text-white text-sm font-semibold">Earning (vault paused)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alternative Vaults -->
+        <div class="bg-brand-surface rounded-2xl p-5 mb-4">
+            <h3 class="text-brand-text-primary font-semibold mb-3">Alternative vaults (currently active)</h3>
+            <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-brand-text-primary font-medium text-sm">🛡️ Stable Vault</p>
+                        <p class="text-brand-text-secondary text-xs">8.5% APY • Low risk</p>
+                    </div>
+                    <span class="text-brand-accent-yes font-bold">✅</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-brand-text-primary font-medium text-sm">⚖️ Balanced Vault</p>
+                        <p class="text-brand-text-secondary text-xs">15.2% APY • Medium risk</p>
+                    </div>
+                    <span class="text-brand-accent-yes font-bold">✅</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Actions -->
+    <div class="sticky bottom-0 bg-brand-surface border-t border-brand-outline px-4 py-4">
+        <button class="w-full bg-brand-primary hover:bg-brand-secondary text-white font-semibold py-4 rounded-xl mb-3 transition-all">
+            Notify Me When Ready
+        </button>
+        <button class="w-full bg-brand-surface border border-brand-outline text-brand-text-primary font-semibold py-4 rounded-xl hover:border-brand-primary transition-all">
+            Try Different Vault
+        </button>
+        <p class="text-center text-brand-text-secondary text-xs mt-3">
+            Need urgent access? <a href="#" class="text-brand-primary font-semibold">Contact Support</a>
+        </p>
+    </div>
+
+    <!-- Edge Case Label -->
+    <div class="px-4 pb-6">
+        <div class="bg-orange-500/10 border border-orange-500/30 rounded-lg p-3">
+            <p class="text-orange-300 text-xs font-mono text-center">Edge Case 4: Vault Paused</p>
+            <p class="text-brand-text-secondary text-xs text-center mt-1">See PRD Section 7, Line 585-720</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

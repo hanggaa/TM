@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partial Withdrawal Options</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#0D0C12',
+                        'brand-surface': '#1A1822',
+                        'brand-background': '#0F0E14',
+                        'brand-outline': '#332E44',
+                        'brand-primary': '#A855F7',
+                        'brand-secondary': '#6C3BAA',
+                        'brand-accent-yes': '#39D393',
+                        'brand-accent-no': '#F87171',
+                        'brand-text-primary': '#E5E7EB',
+                        'brand-text-secondary': '#9CA3AF',
+                    },
+                    fontFamily: {
+                        sans: ['"Space Grotesk"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .mobile-frame {
+            width: 390px;
+            height: 844px;
+            margin: 40px auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+<div class="mobile-frame bg-brand-bg overflow-y-auto">
+
+    <!-- Header -->
+    <div class="bg-brand-surface px-4 py-4 flex items-center justify-between sticky top-0 z-10 border-b border-brand-outline">
+        <button class="flex items-center gap-2 text-brand-text-secondary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <h1 class="text-brand-text-primary font-bold text-lg">Withdraw</h1>
+        <div class="w-6"></div>
+    </div>
+
+    <!-- Position Summary -->
+    <div class="px-4 py-6 bg-brand-surface border-b border-brand-outline">
+        <p class="text-brand-text-secondary text-sm mb-2">Your Position</p>
+        <p class="text-brand-text-primary text-3xl font-bold mb-4">$1,000.00</p>
+
+        <div class="bg-brand-bg rounded-2xl p-4 space-y-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="text-brand-accent-yes text-xl">💚</span>
+                    <span class="text-brand-text-primary font-semibold text-sm">Available Now</span>
+                </div>
+                <span class="text-brand-accent-yes font-bold text-xl">$300</span>
+            </div>
+
+            <div class="border-t border-brand-outline"></div>
+
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="text-orange-400 text-xl">🔒</span>
+                    <span class="text-brand-text-primary font-semibold text-sm">Locked</span>
+                </div>
+                <span class="text-orange-400 font-bold text-xl">$700</span>
+            </div>
+            <p class="text-brand-text-secondary text-xs ml-7">Unlocks: Dec 26 (2 days)</p>
+        </div>
+    </div>
+
+    <!-- Withdrawal Amount -->
+    <div class="px-4 py-6 border-b border-brand-outline">
+        <h3 class="text-brand-text-primary font-semibold mb-4">Withdraw Amount</h3>
+        <div class="bg-brand-surface border-2 border-brand-primary rounded-2xl p-4 mb-3">
+            <input
+                type="number"
+                value="500"
+                class="w-full bg-transparent text-brand-text-primary text-4xl font-bold outline-none"
+            />
+            <div class="flex items-center justify-between mt-2">
+                <span class="text-brand-text-secondary text-sm">USDC</span>
+                <span class="text-brand-text-secondary text-xs">≈ $500.00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Smart Withdrawal Options -->
+    <div class="px-4 py-6">
+        <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 mb-6">
+            <div class="flex items-start gap-3">
+                <span class="text-xl">💡</span>
+                <div>
+                    <p class="text-blue-300 font-semibold text-sm mb-1">Smart Withdrawal Options</p>
+                    <p class="text-brand-text-secondary text-xs">
+                        You want $500, but only $300 is available now. Choose how you'd like to proceed:
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+
+            <!-- Option A: Instant + Delayed -->
+            <div class="bg-brand-surface border-2 border-brand-primary rounded-xl p-5 cursor-pointer">
+                <div class="flex items-start gap-3 mb-3">
+                    <div class="mt-1">
+                        <div class="w-5 h-5 rounded-full border-2 border-brand-primary bg-brand-primary flex items-center justify-center">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <p class="text-brand-text-primary font-bold">Option A: Instant + Delayed</p>
+                            <span class="text-xs px-2 py-1 bg-brand-primary/20 text-brand-primary rounded-full">Recommended</span>
+                        </div>
+                        <p class="text-brand-text-secondary text-sm mb-3">Split your withdrawal into two parts</p>
+
+                        <div class="bg-brand-bg rounded-lg p-3 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-brand-accent-yes">⚡</span>
+                                    <span class="text-brand-text-primary text-sm">Withdraw now</span>
+                                </div>
+                                <span class="text-brand-accent-yes font-bold">$300</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-orange-400">🕐</span>
+                                    <span class="text-brand-text-primary text-sm">Request $200</span>
+                                </div>
+                                <span class="text-orange-400 font-semibold">Dec 26</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option B: Wait for Full Amount -->
+            <div class="bg-brand-surface border border-brand-outline rounded-xl p-5 cursor-pointer opacity-70">
+                <div class="flex items-start gap-3">
+                    <div class="mt-1">
+                        <div class="w-5 h-5 rounded-full border-2 border-brand-outline"></div>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-brand-text-primary font-bold mb-2">Option B: Wait for Full Amount</p>
+                        <p class="text-brand-text-secondary text-sm mb-3">Withdraw entire $500 after lockup</p>
+
+                        <div class="bg-brand-bg rounded-lg p-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span>⏰</span>
+                                    <span class="text-brand-text-primary text-sm">Available</span>
+                                </div>
+                                <span class="text-brand-text-primary font-semibold">Dec 26 (2 days)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option C: Partial Only -->
+            <div class="bg-brand-surface border border-brand-outline rounded-xl p-5 cursor-pointer opacity-70">
+                <div class="flex items-start gap-3">
+                    <div class="mt-1">
+                        <div class="w-5 h-5 rounded-full border-2 border-brand-outline"></div>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-brand-text-primary font-bold mb-2">Option C: Partial Only</p>
+                        <p class="text-brand-text-secondary text-sm mb-3">Withdraw only available amount</p>
+
+                        <div class="bg-brand-bg rounded-lg p-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-brand-accent-yes">⚡</span>
+                                    <span class="text-brand-text-primary text-sm">Withdraw now</span>
+                                </div>
+                                <span class="text-brand-accent-yes font-bold">$300</span>
+                            </div>
+                            <p class="text-brand-text-secondary text-xs mt-2">$700 remains in vault</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Action Button -->
+    <div class="sticky bottom-0 bg-brand-surface border-t border-brand-outline px-4 py-4">
+        <button class="w-full bg-brand-primary hover:bg-brand-secondary text-white font-semibold py-4 rounded-xl transition-all">
+            Continue with Option A
+        </button>
+        <p class="text-center text-brand-text-secondary text-xs mt-2">
+            You can change your choice on the next screen
+        </p>
+    </div>
+
+    <!-- Edge Case Label -->
+    <div class="px-4 pb-6 mt-4">
+        <div class="bg-orange-500/10 border border-orange-500/30 rounded-lg p-3">
+            <p class="text-orange-300 text-xs font-mono text-center">Edge Case 2: Partial Withdrawal</p>
+            <p class="text-brand-text-secondary text-xs text-center mt-1">See PRD Section 7, Line 424-493</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
