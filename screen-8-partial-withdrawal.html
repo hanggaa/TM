@@ -52,7 +52,7 @@
 
     <!-- Header -->
     <div class="bg-brand-surface px-4 py-4 flex items-center justify-between sticky top-0 z-10 border-b border-brand-outline">
-        <button class="flex items-center gap-2 text-brand-text-secondary">
+        <button class="flex items-center gap-2 text-brand-text-secondary" onclick="window.location.href='screen-4a-withdraw-amount.html'">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
@@ -207,20 +207,12 @@
 
     <!-- Bottom Action Button -->
     <div class="sticky bottom-0 bg-brand-surface border-t border-brand-outline px-4 py-4">
-        <button class="w-full bg-brand-primary hover:bg-brand-secondary text-white font-semibold py-4 rounded-xl transition-all">
+        <button class="w-full bg-brand-primary hover:bg-brand-secondary text-white font-semibold py-4 rounded-xl transition-all" onclick="window.location.href='screen-4b-withdraw-pending.html'">
             Continue with Option A
         </button>
         <p class="text-center text-brand-text-secondary text-xs mt-2">
             You can change your choice on the next screen
         </p>
-    </div>
-
-    <!-- Edge Case Label -->
-    <div class="px-4 pb-6 mt-4">
-        <div class="bg-orange-500/10 border border-orange-500/30 rounded-lg p-3">
-            <p class="text-orange-300 text-xs font-mono text-center">Edge Case 2: Partial Withdrawal</p>
-            <p class="text-brand-text-secondary text-xs text-center mt-1">See PRD Section 7, Line 424-493</p>
-        </div>
     </div>
 
 </div>
